@@ -9,13 +9,17 @@ int main()
 {
     Sensor sensor;
 
-    while (true) {
+    while (true)
+    {
         std::vector<float> distances = sensor.getDistances();
-        for (int i = 0; i < distances.size(); ++i) {
+
+        for (std::vector<float>::size_type i = 0; i < distances.size(); ++i)
+        {
             std::cout << "Obstacle " << i + 1 << " distance: " << distances[i] << " meters" << std::endl;
 
             // Collision warning if obstacle is closer than 10 meters
-            if (distances[i] < 10) {
+            if (distances[i] < 10)
+            {
                 std::cout << "WARNING: Obstacle " << i + 1 << " is too close!" << std::endl;
             }
         }
