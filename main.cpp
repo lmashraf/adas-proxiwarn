@@ -13,14 +13,22 @@ int main()
     {
         std::vector<float> distances = sensor.getDistances();
 
+        // Get the relative speeds
+        std::vector<float> speeds = sensor.getSpeeds();
+
         for (std::vector<float>::size_type i = 0; i < distances.size(); ++i)
         {
-            std::cout << "Obstacle " << i + 1 << " distance: " << distances[i] << " meters" << std::endl;
+            // Calculate time to collision
+            float timeToCollision = distances[i] / speeds[i];
 
-            // Collision warning if obstacle is closer than 10 meters
-            if (distances[i] < 10)
-            {
-                std::cout << "WARNING: Obstacle " << i + 1 << " is too close!" << std::endl;
+            std::cout << "Obstacle " << i + 1 << " distance: " << distances[i]
+                      << " meters, speed: " << speeds[i] << " m/s, time to collision: "
+                      << timeToCollision << " seconds" << std::endl;
+
+            // Warning if time to collision is less than 5 seconds
+            if (timeToCollision < 5) {
+                std::cout << "WARNING: Obstacle " << i + 1 << " is too close! Collision likely in "
+                          << timeToCollision << " seconds." << std::endl;
             }
         }
 
