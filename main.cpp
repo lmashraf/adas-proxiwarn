@@ -1,4 +1,4 @@
-#include "sensor/sensor.h"
+#include "src/sensor/sensor.h"
 
 #include <iostream>
 #include <thread>

@@ -1,13 +1,22 @@
 #include "sensor.h"
-
 #include <cstdlib>
 #include <ctime>
+#include <vector>
 
-Sensor::Sensor() {
-    std::srand(std::time(0));
+Sensor::Sensor() 
+{
+    // Seed random number generator
+    std::srand(std::time(0));  
 }
 
-float Sensor::getDistance() {
-    // Simulate a random distance between 0 and 100 meters
-    return static_cast<float>(std::rand() % 100);
+std::vector<float> Sensor::getDistances() 
+{
+    // Simulate distances for multiple obstacles (5 in this example)
+    std::vector<float> distances;
+
+    for (int i = 0; i < 5; ++i) {
+        distances.push_back(static_cast<float>(std::rand() % 100));
+    }
+
+    return distances;
 }

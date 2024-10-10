@@ -1,4 +1,5 @@
-#include "sensor/sensor.h"
+#include "src/sensor/sensor.h"
+
 #include <gtest/gtest.h>
 #include <vector>
 
