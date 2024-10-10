@@ -1,5 +1,7 @@
 cc_binary(
-    name = "collision_warning_system",
+    name = "adas_proxiwarn",
     srcs = ["main.cpp"],
-    deps = ["//src/sensor:sensor"],
+    deps = [
+        "//src/sensor:sensor",
+    ],
 )
