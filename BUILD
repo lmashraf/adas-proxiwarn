@@ -2,6 +2,8 @@ cc_binary(
     name = "adas_proxiwarn",
     srcs = ["main.cpp"],
     deps = [
-        "//src/sensor:sensor",
+        "//src/sensors/lidar:lidar",
+        "//src/sensors/radar:radar",
     ],
+    includes = ["src"],
 )
