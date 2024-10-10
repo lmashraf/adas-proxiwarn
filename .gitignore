@@ -4,9 +4,6 @@ bazel-*
 # Bazel lock files
 MODULE.bazel.lock
 
-# Visual Studio Code settings
-.vscode/
-
 # Logs and temp files
 *.log
 *.tmp
@@ -23,3 +20,6 @@ Thumbs.db
 # C++ specific
 *.swp
 *.swo
+
+# Visual Studio Code settings
+.vscode/
