@@ -1,0 +1,25 @@
+# Bazel output directories
+bazel-*
+
+# Bazel lock files
+MODULE.bazel.lock
+
+# Visual Studio Code settings
+.vscode/
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Build files
+*.o
+*.out
+*.d
+
+# System files
+.DS_Store
+Thumbs.db
+
+# C++ specific
+*.swp
+*.swo
