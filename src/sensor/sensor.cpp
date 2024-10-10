@@ -3,13 +3,13 @@
 #include <ctime>
 #include <vector>
 
-Sensor::Sensor() 
+Sensor::Sensor()
 {
     // Seed random number generator
-    std::srand(std::time(0));  
+    std::srand(std::time(0));
 }
 
-std::vector<float> Sensor::getDistances() 
+std::vector<float> Sensor::getDistances()
 {
     // Simulate distances for multiple obstacles (5 in this example)
     std::vector<float> distances;

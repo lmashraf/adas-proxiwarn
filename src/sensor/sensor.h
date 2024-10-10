@@ -3,7 +3,7 @@
 
 #include <vector>
 
-class Sensor 
+class Sensor
 {
     public:
         Sensor();
