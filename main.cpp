@@ -1,42 +1,28 @@
 #include "sensors/lidar/lidar.h"
 #include "sensors/radar/radar.h"
+#include "vehicle/vehicle.h"
+#include "environment/grid.h"
+#include "navigation/routing.h"
 #include <iostream>
 #include <thread>
 #include <chrono>
-#include <vector>
 
-// Function to process sensor data
-template <typename SensorType>
-void processSensorData(SensorType& sensor, const std::string& sensorName)
-{
-    std::vector<float> distances = sensor.getDistances();
-    std::vector<float> speeds = sensor.getSpeeds();
+int main() {
+    Grid grid(10, 10);
+    grid.addObstacle(5, 5);
 
-    for (std::vector<float>::size_type i = 0; i < distances.size(); ++i)
-    {
-        float timeToCollision = distances[i] / speeds[i];
+    Vehicle vehicle(0, 0, 10, 0);  // Start at (0,0) with speed 10 m/s
+    Routing routing(vehicle, grid);  // Set up routing with the vehicle and grid
 
-        std::cout << sensorName << " Obstacle " << i + 1
-                  << " time to collision: " << timeToCollision << " seconds"
-                  << std::endl;
+    while (true) {
+        vehicle.updatePosition(1);  // Update vehicle position every second
+        grid.displayGrid();  // Show the grid (optional)
 
-        if (timeToCollision < 5) 
-        {
-            std::cout << "WARNING: " << sensorName << " Obstacle " << i + 1 
-                      << " is too close!" << std::endl;
+        // Check for collisions in the vehicle's future path
+        if (routing.checkCollisionPrediction(2)) {  // Predict 2 seconds into the future
+            std::cout << "Collision predicted! Taking action." << std::endl;
+            break;
         }
-    }
-}
-
-int main()
-{
-    LiDAR lidar;
-    Radar radar;
-
-    while (true)
-    {
-        processSensorData(lidar, "LiDAR");  // Process LiDAR data
-        processSensorData(radar, "Radar");  // Process Radar data
 
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
