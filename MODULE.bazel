@@ -12,3 +12,13 @@ module(
 
 bazel_dep(name = "rules_cc", version = "0.0.9")
 bazel_dep(name = "googletest", version = "1.15.2")
+
+# Globally set C++17 standard using module extensions
+bazel_dep(name = "rules_cc", version = "0.0.9")
+
+cc_toolchain(
+    name = "cc_toolchain",
+    toolchain_type = "@bazel_tools//tools/cpp:toolchain_type",
+    cpu = "local",
+    cxx_flags = ["-std=c++17"],  # Enable C++17 globally
+)

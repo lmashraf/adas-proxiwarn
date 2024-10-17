@@ -2,6 +2,7 @@ cc_library(
     name = "grid",
     srcs = ["grid.cpp"],
     hdrs = ["grid.h"],
+    deps = [":obstacle"],
     visibility = ["//visibility:public"],
 )
 

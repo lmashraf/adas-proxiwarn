@@ -1,10 +1,10 @@
 #ifndef ROUTING_H
 #define ROUTING_H
 
-#include "vehicle.h"
-#include "environment/grid.h"
+#include "../vehicle/vehicle.h"
+#include "../environment/grid.h"
 
-class Routing 
+class Routing
 {
     public:
         Routing(const Vehicle& vehicle, const Grid& grid);

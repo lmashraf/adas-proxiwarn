@@ -6,6 +6,8 @@ cc_binary(
         "//src/sensors/radar:radar",
         "//src/vehicle:vehicle",
         "//src/environment:grid",
+        "//src/environment:obstacle",
         "//src/navigation:routing",
     ],
+    includes = ["src"],
 )
